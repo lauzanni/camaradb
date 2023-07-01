@@ -3,11 +3,8 @@ const { conn } = require ("../config/conn");
 //MOSTRAR UNA Camara
 async function showOne(params){
     const { nombreCamara } = params;
-  
-    console.log(nombreCamara);
    
     try{
-        // const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ", ["%" + nombreCamara +"%"] );
         const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ", [`%${nombreCamara}%`] );
         return rows;
     }catch(error){
@@ -48,7 +45,6 @@ async function showAll(){
 //AÑADIR UNA Camara a través de un formulario
 async function addOne (body){
     const {nombreCamara,anylanzamiento, idMarca, precio} = body;
-    // console.log(nombreCamara + "ESTO ES BODY, ponerlo como formulario! ");
 
     try{
         const [rows] = await conn.query("INSERT IGNORE INTO camaras SET ?",{
