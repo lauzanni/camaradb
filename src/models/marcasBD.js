@@ -14,6 +14,20 @@ async function showOne(params){
     }
 };
 
+//BUSCAR UNA Marca
+async function searchMarca(body){
+    const { nombreMarca, paisMarca } = body;
+    try{
+        const [rows] = await conn.query("SELECT * FROM `marcas` WHERE `nombreMarca` LIKE ? AND `paisMarca` LIKE ? ", [`%${nombreMarca}%`,`%${paisMarca}%`]);
+       // console.log(await conn.query("SELECT * FROM `marcas` WHERE `nombreMarca` LIKE ? ", [`%${nombreMarca}%`] ));
+        return rows;
+    }catch(error){
+        throw error;
+    }finally{
+        conn.releaseConnection();
+    }
+};
+
 //MOSTRAR TODAS las marcas
 async function showAll(){
     try{
@@ -50,5 +64,6 @@ async function addOne (body){
 module.exports = {
     showOne, 
     showAll,
-    addOne
+    addOne,
+    searchMarca
 }

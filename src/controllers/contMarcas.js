@@ -3,7 +3,6 @@ const servMarcas = require('../services/servMarcas');
 //AGREGAR marcas a través de un formulario
 const addOne = async(req, res)=>{
     const result = await servMarcas.addOne(req.body);
- 
     res.send(result);
 }
 
@@ -19,11 +18,17 @@ const showAll = async (req, res)=>{
     res.send(result);
 };
 
+//BUSCAR una marca por nombreMarca
+const searchMarca = async (req,res)=>{
+    const result = await servMarcas.searchMarca(req.body);
+    res.send(result);
+};
 //BORRAR UNA marca
 //MODIFICAR UNA marca
 
 module.exports = {
     showAll,
     showOne,
-    addOne
+    addOne,
+    searchMarca
 }

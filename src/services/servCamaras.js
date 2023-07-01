@@ -12,8 +12,7 @@ const showOne = async (params) => {
 };
 //BUSCAR UNA Camara
 const searchCam = async (body) => {
-   console.log("llego aquí");
-
+ 
    const rows = await model.searchCam(body);//array
    console.log(rows);
    if( rows.length > 0 ){

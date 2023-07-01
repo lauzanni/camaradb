@@ -17,8 +17,6 @@ async function showOne(params){
 async function searchCam(body){
     const { nombreCamara } = body;
   
-    console.log(nombreCamara);
-    console.log(typeof(nombreCamara));
     try{
         // const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ", ["%" + nombreCamara +"%"] );
         const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ", [`%${nombreCamara}%`] );

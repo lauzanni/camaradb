@@ -9,6 +9,8 @@ rutMarcas.post("/", contMarcas.addOne);
 //mostrar todas las marcas
 rutMarcas.get("/",contMarcas.showAll);
 
+//BUSCAR a traves de un formulario con el nombre de una marca
+rutMarcas.post("/search",contMarcas.searchMarca);
 //mostrar una marca
 rutMarcas.get("/:nombreMarca", contMarcas.showOne);
 
