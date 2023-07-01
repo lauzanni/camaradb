@@ -24,11 +24,16 @@ const searchMarca = async (req,res)=>{
     res.send(result);
 };
 //BORRAR UNA marca
+const delMarca = async (req, res)=>{
+    const result = await servMarcas.delMarca(req.body);
+    res.send(result);
+};
 //MODIFICAR UNA marca
 
 module.exports = {
     showAll,
     showOne,
     addOne,
-    searchMarca
+    searchMarca,
+    delMarca
 }

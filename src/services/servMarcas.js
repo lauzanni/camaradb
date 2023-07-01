@@ -38,11 +38,15 @@ const showAll = async ()=>{
 };
 
 //BORRAR UNA marca
+const delMarca = async(body) =>{
+   return model.delMarca(body);
+};
 //MODIFICAR UNA marca
 
 module.exports = {
    showAll,
    showOne,
    addOne,
-   searchMarca
+   searchMarca,
+   delMarca
 };
