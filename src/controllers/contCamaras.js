@@ -8,6 +8,7 @@ const addOne = async(req, res)=>{
 
 //MOSTRAR UNA camara solicitada en los parametros de la url
 const showOne = async (req,res)=>{
+    console.log(req.params);
     const camara = await servCamaras.showOne(req.params);
     res.send(camara);
 };

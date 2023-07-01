@@ -4,7 +4,8 @@ const model = require('../models/camarasBD');
 const showOne = async (params) => {
    const rows = await model.showOne(params);//array
       if( rows.length > 0 ){
-      return rows[0];//muestra un objeto
+      // return rows[0];//muestra un objeto
+      return rows;
       
    }
    return "No Existe Esa Camara."

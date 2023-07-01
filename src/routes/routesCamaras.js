@@ -9,11 +9,12 @@ rutCamaras.post("/", contCamaras.addOne);
 //mostrar todas las Camaras
 rutCamaras.get("/",contCamaras.showAll);
 
+//buscar una camara por el nombreCamara
+rutCamaras.post("/search", contCamaras.searchCam);
+
 //mostrar una camara
 rutCamaras.get("/:nombreCamara", contCamaras.showOne);
 
-//buscar una camara por el nombreCamara
 
-rutCamaras.post("/search", contCamaras.searchCam);
 
 module.exports = rutCamaras;
