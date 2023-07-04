@@ -1,6 +1,11 @@
 require("dotenv").config();
 const express = require("express");
+const methodOverride = require('method-override');
+
 const app = express();
+
+//override para habilitar los metodos PUT y DELETE a través de formulario html
+app.use(methodOverride('_method'));
 
 //middelware que trae el archivo de las rutas
 // app.use(require("./src/routes/mainRoutes.js"));

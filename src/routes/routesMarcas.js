@@ -13,12 +13,14 @@ rutMarcas.get("/",contMarcas.showAll);
 rutMarcas.post("/search",contMarcas.searchMarca);
 
 //borrar una marca
-rutMarcas.delete("/delete", contMarcas.delMarca);
+rutMarcas.delete("/delete",contMarcas.delMarca);
+
+//modificar una marca
+rutMarcas.put("/modifica",contMarcas.modificaMarca);
 
 //mostrar una marca
 rutMarcas.get("/:nombreMarca", contMarcas.showOne);
 
-//modificar una marca
-rutMarcas.put("/modifica",contMarcas.modificaMarca);
+
 
 module.exports = rutMarcas;

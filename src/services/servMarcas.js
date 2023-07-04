@@ -42,11 +42,14 @@ const delMarca = async(body) =>{
    return model.delMarca(body);
 };
 //MODIFICAR UNA marca
-
+const modificaMarca = async(body)=>{
+   return model.modificaMarca(body);
+};
 module.exports = {
    showAll,
    showOne,
    addOne,
    searchMarca,
-   delMarca
+   delMarca,
+   modificaMarca
 };

@@ -91,12 +91,28 @@ async function delMarca(body) {
 		conn.releaseConnection();
 	}
 }
-//MODIFICAR UNA marca
-
+//MODIFICAR UNA marca  
+//UPDATE `marcas` SET `idMarca`=2,`nombreMarca`='samsung',`paisMarca`='corea' WHERE idMarca=0 
+async function modificaMarca(body) {
+	const { idMarca, nombreMarca, paisMarca } = body;
+	try {
+		const [rows] = await conn.query("UPDATE `marcas` SET ? WHERE `idMarca` LIKE ? ", [{
+			nombreMarca,
+			paisMarca, 
+			idMarca
+		},idMarca]);
+		return rows;
+	} catch (error) {
+		throw error;
+	} finally {
+		conn.releaseConnection();
+	}
+}
 module.exports = {
 	showOne,
 	showAll,
 	addOne,
 	searchMarca,
 	delMarca,
+	modificaMarca
 };

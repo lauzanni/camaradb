@@ -29,11 +29,16 @@ const delMarca = async (req, res)=>{
     res.send(result);
 };
 //MODIFICAR UNA marca
+const modificaMarca = async (req, res)=>{
+    const result = await servMarcas.modificaMarca(req.body);
+    res.send(result);
+};
 
 module.exports = {
     showAll,
     showOne,
     addOne,
     searchMarca,
-    delMarca
+    delMarca,
+    modificaMarca
 }
