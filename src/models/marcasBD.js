@@ -20,8 +20,8 @@ async function showOne(params) {
 //BUSCAR UNA Marca
 async function searchMarca(body) {
 	const { nombreMarca, paisMarca } = body;
-	let filter1 = "",
-		filter2 = "";
+	let filter1 = "";
+	let	filter2 = "";
 	try {
 		if (nombreMarca == "" && paisMarca != "") {
 			filter2 = paisMarca;
@@ -81,7 +81,7 @@ async function delMarca(body) {
 	try {
 		const [rows] = await conn.query(
 			"DELETE FROM `marcas` WHERE `nombreMarca` LIKE ? ",
-			[nombreMarca]
+			[`%${nombreMarca}%`]
 		);
 		console.log(rows);
 		return rows;

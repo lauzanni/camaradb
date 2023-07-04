@@ -37,12 +37,20 @@ const showAll = async () =>{
 };
 
 //BORRAR UNA Camara
+const delCamara = async(body) =>{
+   const result = await model.delCamara(body);
+   if(result.affectedRows >0){
+      return "Cámara borrada.";
+   }
+   return result;
+};
 //MODIFICAR UNA Camara
 
 module.exports = {
    showAll,
    showOne,
    addOne,
-   searchCam
+   searchCam,
+   delCamara
 }; 
    

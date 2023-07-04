@@ -25,11 +25,22 @@ const searchCam = async (req,res)=>{
 };
 
 //BORRAR UNA camara
+const delCamara = async (req, res)=>{
+    const result = await servCamaras.delCamara(req.body);
+    res.send(result);
+};
+
 //MODIFICAR UNA camara
+const modificaCamara = async (req, res)=>{
+    const result = await servCamaras.modificaCamara(req.body);
+    res.send(result);
+};
 
 module.exports = {
     showAll,
     showOne,
     addOne,
-    searchCam
+    searchCam,
+    delCamara,
+    modificaCamara
 }

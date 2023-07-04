@@ -15,11 +15,21 @@ async function showOne(params){
 };
 //BUSCAR UNA Camara
 async function searchCam(body){
-    const { nombreCamara } = body;
-  
+    const { nombreCamara, anylanzamiento, precio, idMarca, tipoCamara } = body;
+   
+    console.log( nombreCamara, anylanzamiento, precio, idMarca, tipoCamara);
+    
     try{
         // const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ", ["%" + nombreCamara +"%"] );
-        const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ", [`%${nombreCamara}%`] );
+        //   const [rows] = await conn.query("SELECT * FROM `camaras` WHERE `nombreCamara` LIKE ? ",  [`%${nombreCamara}%`,] );
+        // console.log("SELECT * FROM `camaras` WHERE nombreCamara, anylanzamiento, precio, idMarca, idTipoCamara LIKE ? OR ? OR ? OR ? OR ? ",  
+        // {`%${nombreCamara}%`,`%${anylanzamiento}%`,`%${precio}%`,`%${idMarca}%` } );
+
+    //    const [rows] = await conn.query("SELECT * FROM `camaras` WHERE CONCAT(nombreCamara,precio, idTipoCamara) LIKE ? OR ? OR ?  ",  
+    //    [`%${nombreCamara}%`,`%${precio}%`, `%${idTipoCamara}%` ] );
+       const [rows] = await conn.query("SELECT * FROM `camaras` WHERE nombreCamara LIKE ? OR tipoCamara LIKE ? OR precio LIKE ? OR anylanzamiento LIKE ?",  
+       [`%${nombreCamara}%`, `%${tipoCamara}%`, `%${precio}%` ,`%${anylanzamiento}%` ] );
+    
         return rows;
     }catch(error){
         throw error;
@@ -61,12 +71,28 @@ async function addOne (body){
 };
 
 //BORRAR UNA Camara
+async function delCamara(body){
+    const {idCamara, nombreCamara, anylanzamiento, idMarca, tipoCamara }= body ;
+    try{
+        const [rows] = await conn.query("DELETE FROM `camaras` WHERE idCamara LIKE ? OR nombreCamara LIKE ? ",  
+        [`%${idCamara}`,`%${nombreCamara}%`] );
+     
+        return rows;
+
+    }catch(error){
+        throw error;
+    }finally{
+        conn.releaseConnection();
+    }
+};
+
 //MODIFICAR UNA Camara
 
 module.exports = {
     showOne, 
     showAll,
     addOne,
-    searchCam
+    searchCam,
+    delCamara
 
 }
