@@ -13,14 +13,12 @@ rutCamaras.get("/",contCamaras.showAll);
 rutCamaras.post("/search", contCamaras.searchCam);
 
 //borrar una camara de la bd
-rutCamaras.delete("/delete", contCamaras.delCamara);
-
-//modificar una camara con put
-rutCamaras.put("/",contCamaras.modificaCamara);
+rutCamaras.delete("/delete", contCamaras.delCamara); 
 
 //el formulario va con methode = post pero emulado a put 
-//modificar una marca
-//rutMarcas.put("/modifica",contCamaras.modificaCamara);
+//modificar una camara con put
+rutCamaras.put("/modifica",contCamaras.modificaCamara);
+
 //mostrar una camara
 rutCamaras.get("/:nombreCamara", contCamaras.showOne);
 

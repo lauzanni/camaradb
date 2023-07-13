@@ -44,13 +44,18 @@ const delCamara = async(body) =>{
    }
    return result;
 };
+
 //MODIFICAR UNA Camara
+const modificaCamara = async(body) =>{
+   return model.modificaCamara(body);
+};
 
 module.exports = {
    showAll,
    showOne,
    addOne,
    searchCam,
-   delCamara
+   delCamara,
+   modificaCamara
 }; 
    

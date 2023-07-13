@@ -7,11 +7,15 @@ const app = express();
 //override para habilitar los metodos PUT y DELETE a través de formulario html
 app.use(methodOverride('_method'));
 
-//middelware que trae el archivo de las rutas
-// app.use(require("./src/routes/mainRoutes.js"));
-app.use(express.urlencoded({ extended:false}));
+// Convertimos los datos entrantes en formato 
+// 		application/x-www-form-urlencoded 
+// 		application/json
+// a un formato entendible por el servidor
+ 
+app.use(express.urlencoded({ extended:false }));
+app.use(express.json());
 
-//routes
+//routes: middelware que trae el archivo de las rutas
 app.use('/', require("./src/routes/mainRoutes"));
 
 //error 404
